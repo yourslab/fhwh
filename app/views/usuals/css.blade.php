@@ -7,6 +7,9 @@
 {{-- Loading Fonts --}}
 {{ HTML::style('http://fonts.googleapis.com/css?family=Contrail+One') }}
 
+{{-- iCheck jQuery plugin for line radio button =============================--}}
+{{ HTML::style('css/line/green.css') }}
+
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
