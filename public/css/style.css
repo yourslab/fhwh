@@ -34,6 +34,14 @@ body {
 	height:100%;
 }
 
+.vimeo {
+	padding-bottom:1%;
+}
+
+.cta {
+	height:26.89em;
+}
+
 .cta-container {
 	height:100%;
 	background-color:#f39c12;
@@ -54,11 +62,44 @@ body {
 }
 
 .check-image {
-	width:35%;
+	width:40%;
 	display: block;
     margin-left: auto;
     margin-right: auto;
+    padding-top:5%;
+    padding-bottom:5%;
+}
+
+.cta-caption-icheck {
+	font-size:1em;
+	font-weight:bold;
+	text-decoration:underline;
+	margin:0;
+	text-align:center;
+	color:white;
+	padding-bottom:2%;
+}
+
+.icheck-container {
+	display:none;
+	width:65%;
+    margin-left: auto;
+    margin-right: auto;
     padding-bottom:2%;
+}
+
+.push {
+	margin-bottom:2%;
+}
+
+.thanks {
+	display:none;
+	white-space: normal;
+	margin-top:7%;
+    margin-left: auto;
+    margin-right: auto;
+	width:70%;
+	text-align:center;
 }
 
 .cta-form-size {
@@ -141,3 +182,28 @@ body {
 	background-color:#ffa925;
 	color:white;
 }
+
+/* Responsive Embed
+-------------------------------------------------- */
+
+.embed-container { 
+	position: relative;
+	padding-bottom: 56.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+	height: auto;
+	-webkit-border-radius:12px;
+	   -moz-border-radius:12px;
+			border-radius:12px;
+} 
+
+.embed-container iframe, .embed-container object, .embed-container embed { 
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+

@@ -2,8 +2,8 @@
 ----------------------------------- */
 .icheckbox_line-green,
 .iradio_line-green {
+    display:block;
     position: relative;
-    display: block;
     margin: 0;
     padding: 5px 15px 5px 38px;
     font-size: 13px;
@@ -32,7 +32,7 @@
     .icheckbox_line-green.hover,
     .icheckbox_line-green.checked.hover,
     .iradio_line-green.hover {
-        background: #27ae60;
+        background: #20966B;
     }
     .icheckbox_line-green.checked,
     .iradio_line-green.checked {
