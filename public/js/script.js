@@ -14,4 +14,22 @@ $(document).ready(function(){
     });
   });
 
+  //script for cta phase 1
+  $('.cta-button').click(function() {
+    //hide email textbox and submit button
+    $(this).hide();
+    $('.cta-email').hide();
+
+    //show choices
+    $('.icheck-container').fadeIn();
+  });
+
+  //script for cta last phase
+  $('.cta-button-last').click(function() {
+    //hide choices
+    $('.icheck-container').hide();
+
+    //show thank you
+    $('.thanks').show();
+  });
 });
