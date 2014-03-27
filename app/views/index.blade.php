@@ -19,19 +19,24 @@
 				<div class="cta-container">
 					<h4 class="cta-caption">Ask questions and get them answered for free by real educators and tutors</h4>
 					<img src="images/icons/png/Retina-Ready.png" class="check-image"/>
-					<h6 class="cta-caption-icheck">Please choose one</h6>
 					<div class="icheck-container">
-						<input type="radio" class="icheck" name="iCheck" checked="" />
+					<h6 class="cta-caption-icheck">Please choose one</h6>
+						<input type="radio" class="icheck" name="iCheck"/>
 							<label>I'm a student.</label>
 						<div class="push"></div>
 						<input type="radio" class="icheck" name="iCheck"/>
-							<label>I'm a teacher.</label>
+							<label>I'm an educator.</label>
 						<div class="push"></div>
 						<input type="radio" class="icheck" name="iCheck"/>
 							<label>I'm none of the above.</label>
+						<div class="push"></div>
+						<a href="#" class="btn btn-lg btn-success cta-form-size cta-button-last">Finish</a>
 					</div>
-					<input type="text" placeholder="E-mail" class="form-control cta-form-size" />
-					<a href="#fakelink" class="btn btn-lg btn-success cta-form-size">Be the first to find out more >></a>
+					<div class="thanks alert alert-success">
+					Thank you! We'll make sure to email you if we have any updates.
+					</div>
+					<input type="text" placeholder="E-mail" class="form-control cta-form-size cta-email" />
+					<a href="#" class="btn btn-lg btn-success cta-form-size cta-button">Be the first to find out more >></a>
 				</div>
 			</div>
 		</div>
