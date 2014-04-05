@@ -10,6 +10,9 @@
 {{-- iCheck jQuery plugin for line radio button =============================--}}
 {{ HTML::style('css/line/green.css') }}
 
+{{-- Loading FontAwesome CDN --}}
+{{ HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css') }}
+
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
 <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>

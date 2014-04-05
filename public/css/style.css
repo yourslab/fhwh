@@ -16,7 +16,7 @@ body {
   margin: 0 auto -59px;
   /* Pad bottom by footer height */
   padding: 0 15px 40px;
-  background-color:#f6c651;
+  background-color:#f39c4F; /* f6c651 */
 }
 
 /* Set the fixed height of the footer here */
@@ -49,6 +49,7 @@ body {
 	padding: 3% 0px 5% 0;
 	-webkit-border-radius:12px;
 	   -moz-border-radius:12px;
+	     -o-border-radius:12px;
 			border-radius:12px;
 	background-clip: padding-box;
 }
@@ -118,10 +119,11 @@ body {
 }
 
 .step {
-	height:100%;
+	min-height:8.8em;
 	background-color:#f4ad2b;
 	-webkit-border-radius:12px;
 	   -moz-border-radius:12px;
+	     -o-border-radius:12px;
 			border-radius:12px;
 	background-clip: padding-box;	
 	margin-bottom:1em;
@@ -154,7 +156,7 @@ body {
 }
 
 .step-desc {
-	overflow:;
+	overflow:hidden;
 	white-space: normal;
 	font-style:italic;
 	padding:5px;
@@ -164,23 +166,46 @@ body {
 	text-align:center;
 }
 
-.student-question {
-	white-space: normal;
+.suggestions {
 	margin:0;
 	text-align:center;
 	height:3.3em;
 	background-color:#f39c12;
 	color:white;
+	-webkit-transition: background-color 0.2s ease;
+	   -moz-transition: background-color 0.2s ease;
+	     -o-transition: background-color 0.2s ease;
+	        transition: background-color 0.2s ease;
 }
 
-.tutor-question {
-	white-space: normal;
+.suggestions:hover {
+	background-color:#f69401;
+	text-decoration: underline;
+}
+
+.inline {
+	display:inline;
+	margin-left:2%;
+	line-height:2em;
+}
+
+.contact-us {
 	margin:0;
 	vertical-align: center;
 	text-align:center;
 	height:3.3em;
-	background-color:#ffa925;
+	background-color:#ffaF25;
 	color:white;
+	-webkit-transition: background-color 0.2s ease;
+	   -moz-transition: background-color 0.2s ease;
+	     -o-transition: background-color 0.2s ease;
+	        transition: background-color 0.2s ease;
+
+}
+
+.contact-us:hover {
+	background-color:#f5a725;
+	text-decoration: underline;
 }
 
 /* Responsive Embed
@@ -196,6 +221,7 @@ body {
 	height: auto;
 	-webkit-border-radius:12px;
 	   -moz-border-radius:12px;
+	     -o-border-radius:12px;
 			border-radius:12px;
 } 
 
@@ -207,3 +233,14 @@ body {
 	height: 100%;
 }
 
+/* Bootstrap Vertical Align Code
+-------------------------------------------------- */
+
+.center-row {
+	display:table;
+}
+.center {
+	display:table-cell;
+    vertical-align:middle;
+    float:none;
+}

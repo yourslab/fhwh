@@ -30,13 +30,15 @@
 						<input type="radio" class="icheck" name="iCheck"/>
 							<label>I'm none of the above.</label>
 						<div class="push"></div>
-						<a href="#" class="btn btn-lg btn-success cta-form-size cta-button-last">Finish</a>
+						<button type="button" class="btn btn-lg btn-success cta-form-size cta-button-last">Finish</button>
 					</div>
 					<div class="thanks alert alert-success">
 					Thank you! We'll make sure to email you if we have any updates.
 					</div>
+					<form class="ask-email" action="#">
 					<input type="text" placeholder="E-mail" class="form-control cta-form-size cta-email" />
-					<a href="#" class="btn btn-lg btn-success cta-form-size cta-button">Be the first to find out more >></a>
+					<button type="submit" class="btn btn-lg btn-success cta-form-size cta-button">Be the first to find out more >></button>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -45,12 +47,12 @@
 			<h2 class="step-info-caption">How does it work?</h2>
 			<div class="col-md-4">
 				<div class="step">
-					<div class="row">
-						<div class="col-md-4">
+					<div class="row center-row">
+						<div class="col-md-4 cemter">
 							<img src="images/icons/png/Mortarboard@2x.png" class="desc-image" style="margin-top:1em;" alt="Image of a clock"/>
 						</div>
 						<div class="clearfix visible-md"></div>
-						<div class="col-md-8">
+						<div class="col-md-8 center">
 							<h4 class="step-title">1. Questions</h4>
 							<h6 class="step-desc">Students only need to register to get homework help.</h6>
 						</div>
@@ -60,12 +62,12 @@
 
 			<div class="col-md-4">
 				<div class="step">
-					<div class="row">
-						<div class="col-md-4">
+					<div class="row center-row">
+						<div class="col-md-4 center">
 							<img src="images/icons/png/Watches.png" class="desc-image" alt="Image of a clock"/>
 						</div>
 						<div class="clearfix visible-md"></div>
-						<div class="col-md-8">
+						<div class="col-md-8 center">
 							<h4 class="step-title">2. Answers</h4>
 							<h6 class="step-desc">Tutors answer questions and receive rewards for their helpfulness.</h6>
 						</div>
@@ -75,12 +77,12 @@
 
 			<div class="col-md-4">
 				<div class="step">
-					<div class="row">
-						<div class="col-md-4">
+					<div class="row center-row">
+						<div class="col-md-4 center">
 							<img src="images/icons/png/Dude@2x.png" class="desc-image" alt="Image of a clock"/>
 						</div>
 						<div class="clearfix visible-md"></div>
-						<div class="col-md-8">
+						<div class="col-md-8 center">
 							<h4 class="step-title">3. Practice</h4>
 							<h6 class="step-desc">Students can also practice independently with the worksheets on the site!</h6>
 						</div>
@@ -93,9 +95,9 @@
 
 <div id="footer">
 	<div class="container-fluid">
-		<div id="row">
-		<div class="col-md-6 student-question"><h4>Suggestions?</h4></div>
-			<div class="col-md-6 tutor-question"><h4>Contact Us</h4></div>
+		<div id="row center-row">
+		<a href="#"><div class="col-md-6 suggestions"><i class="fa fa-lightbulb-o fa-2x"></i><h4 class="inline">Suggestions?</h4></div></a>
+		<a href="#"><div class="col-md-6 contact-us"><i class="fa fa-comments-o fa-2x"></i><h4 class="inline">Contact Us</h4></div></a>
 		</div>
 	</div>
 </div>

@@ -15,7 +15,7 @@ $(document).ready(function(){
   });
 
   //script for cta phase 1
-  $('.cta-button').click(function() {
+  $('.ask-email').submit(function() {
     //hide email textbox and submit button
     $(this).hide();
     $('.cta-email').hide();
@@ -30,6 +30,6 @@ $(document).ready(function(){
     $('.icheck-container').hide();
 
     //show thank you
-    $('.thanks').show();
+    $('.thanks').fadeIn();
   });
 });
