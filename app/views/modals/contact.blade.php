@@ -1,113 +1,31 @@
-@extends('master')
-
-@section('title') Home @stop
-
-@section('content')
-	{{-- Alert --}}
-	@include('template/modules.alert')
-
-	<div class="row">
-
-		{{-- Thread Listing --}}
-		<div class="col-md-9">
-		
-			{{-- Tab pane --}}
-			<ul class="nav nav-tabs">
-				<li class="active">
-					<a href="#recent" data-toggle="tab">
-						Recent
-					</a>
-				</li>
-
-				<li>
-					<a href="#hot" data-toggle="tab">
-						Hot
-					</a>
-				</li>
-			</ul>
-
-			{{-- Content --}}
-			<div class="tab-content">
-
-				<div class="tab-pane active" id="recent">
-					{{-- Threads List --}}
-					@foreach($recent as $thread)
-						<div class="row thread">
-							{{-- Basic Thread Stats --}}
-							<div class="col-md-1">
-								<h4 class="text-center">
-									0 <br />
-									<small> votes </small>
-								</h4>
-							</div>
-
-							<div class="col-md-1">
-								<h4 class="text-center">
-									{{ count($thread->posts) }} <br />
-									<small> posts </small>
-								</h4>
-							</div>
-
-							<div class="col-md-1">
-								<h4 class="text-center">
-									{{ $thread->hits }} <br />
-									<small> hits </small>
-								</h4>
-							</div>
-
-							<div class="col-md-9">
-								<h4>
-									<a href="{{ URL::route('thread.show', $thread->id) }}">
-										{{ $thread->title }}
-									</a>
-								</h4>
-							</div>
-						</div>
-						<hr>
-					@endforeach
-				</div>{{-- /.tab-pane --}}
-
-				<div class="tab-pane" id="hot">
-					{{-- Threads List --}}
-					@foreach($hot as $thread)
-						<div class="row thread">
-							{{-- Basic Thread Stats --}}
-							<div class="col-md-1">
-								<h4 class="text-center">
-									0 <br />
-									<small> votes </small>
-								</h4>
-							</div>
-
-							<div class="col-md-1">
-								<h4 class="text-center">
-									{{ count($thread->posts) }} <br />
-									<small> posts </small>
-								</h4>
-							</div>
-
-							<div class="col-md-1">
-								<h4 class="text-center">
-									{{ $thread->hits }} <br />
-									<small> hits </small>
-								</h4>
-							</div>
-
-							<div class="col-md-9">
-								<h4>
-									<a href="{{ URL::route('thread.show', $thread->id) }}">
-										{{ $thread->title }}
-									</a>
-								</h4>
-							</div>
-						</div>
-						<hr>
-					@endforeach
-				</div>{{-- /.tab-pane --}}
-
-			</div>{{-- /.tab-content --}}
-
-		</div>{{-- /.col-md-9 --}}
-
-	</div>{{-- /.row --}}
-@stop
+  <!-- Modal -->
+  <div class="modal fade" id="contact" tabindex="-1" role="dialog" aria-labelledby="Contact Us" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Feel free to contact us!</h4>
+        </div>
+        <div class="modal-body">
+          <form role="form">
+  <div class="form-group">
+    <label for="contact-name">Name</label>
+    <input type="email" class="form-control" id="contact-name" placeholder="Enter name">
+  </div>
+  <div class="form-group">
+    <label for="contact-password">Email</label>
+    <input type="password" class="form-control" id="contact-password" placeholder="Enter email">
+  </div>
+  <div class="form-group">
+    <label for="contact-message">Message</label>
+    <textarea class="form-control" id="contact-message" rows="3" placeholder="Enter message"></textarea>
+  </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary">Send</button>
+        </div>
+        </form>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->

@@ -10,6 +10,7 @@
   </head>
   <body>
     @yield('content')
+    @yield('modals')
     @yield('javascript')
   </body>
 </html>

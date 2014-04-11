@@ -96,11 +96,16 @@
 <div id="footer">
 	<div class="container-fluid">
 		<div id="row center-row">
-		<a href="#"><div class="col-md-6 suggestions"><i class="fa fa-lightbulb-o fa-2x"></i><h4 class="inline">Suggestions?</h4></div></a>
-		<a href="#"><div class="col-md-6 contact-us"><i class="fa fa-comments-o fa-2x"></i><h4 class="inline">Contact Us</h4></div></a>
+		<a data-toggle="modal" href="#suggestions"><div class="col-md-6 suggestions"><i class="fa fa-lightbulb-o fa-2x"></i><h4 class="inline">Suggestions?</h4></div></a>
+		<a data-toggle="modal" href="#contact"><div class="col-md-6 contact-us"><i class="fa fa-comments-o fa-2x"></i><h4 class="inline">Contact Us</h4></div></a>
 		</div>
 	</div>
 </div>
+@stop
+
+@section('modals')
+@include('modals.suggest')
+@include('modals.contact')
 @stop
 
 @section('javascript')
