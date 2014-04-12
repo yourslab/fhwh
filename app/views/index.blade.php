@@ -35,8 +35,8 @@
 					<div class="thanks alert alert-success">
 					Thank you! We'll make sure to email you if we have any updates.
 					</div>
-					<form class="ask-email" action="#">
-					<input type="text" placeholder="E-mail" class="form-control cta-form-size cta-email" />
+					<form class="ask-email" role="form" action="#">
+						<input type="text" placeholder="Enter email" class="form-control cta-form-size cta-email" />
 					<button type="submit" class="btn btn-lg btn-success cta-form-size cta-button">Be the first to find out more >></button>
 					</form>
 				</div>

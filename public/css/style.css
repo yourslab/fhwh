@@ -30,7 +30,10 @@ body {
 
 .main-hero {
 	padding:1% 1% 2% 1%;
-	background: url('../images/stressed_student.jpg') no-repeat center center fixed; 
+	background: url('../images/stressed_student.jpg');
+	background-size: cover;
+  -moz-background-size: cover;  /* Firefox 3.6 */
+  background-position: center;  /* Internet Explorer 7/8 */ 
 	height:100%;
 }
 
