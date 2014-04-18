@@ -33,7 +33,10 @@ class UserController extends BaseController {
         $validator = Validator::make(Input::all(), $rules);
 
         if ($validator->fails()) {
-        	return "shit!";
+        	$messages = $validator->messages(); //write down all error messages
+        	return Response::json(array(
+        		'errors' => $messages->all() //send error back to javascript
+        	));
         }
 
 	}

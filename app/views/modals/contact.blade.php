@@ -9,6 +9,7 @@
         <div class="modal-body">
         <div class="alert alert-info" id="contact-sending" style="display:none;">Sending, please wait...</div>
         <div class="alert alert-success" id="contact-success" style="display:none;">Your message was sent!</div>
+        <div class="alert alert-danger" id="contact-errors" style="display:none;padding:0 5% 0 5%;"></div>
           <form action="{{ action('UserController@registerMessage') }}" accept-charset="UTF-8" id="contact-form" role="form" method="POST">
             <div class="form-group">
               <label for="contact-name">Name</label>

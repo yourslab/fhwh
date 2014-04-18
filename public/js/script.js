@@ -55,7 +55,17 @@ $(document).ready(function(){
       },
       success: function(data) {
         $('#'+type+'-sending').hide(); //hide progress
-        $('#'+type+'-success').fadeIn(); //show success
+        if (data.errors) { //if there are errors
+          $('#'+type+'-errors').html(''); //clear any previous errors from previous load
+          for (var i = 0; i < data.errors.length; i++) { //loop through each error
+          $('#'+type+'-errors').append(function() { //return and append each error
+                return '<li>'+data.errors[i]+'</li>'; 
+          });
+          } //add errors to div
+          $('#'+type+'-errors').fadeIn(); //show errors
+        } else {
+          $('#'+type+'-success').fadeIn(); //show success
+        }
       }
     });
   }
