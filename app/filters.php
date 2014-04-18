@@ -69,12 +69,29 @@ Route::filter('guest', function()
 | cross-site request forgery attacks. If this special token in a user
 | session does not match the one given in this request, we'll bail.
 |
-*/
 
+
+OLD CSRF FILTER FUNCTION (NOT FOR AJAX)
 Route::filter('csrf', function()
 {
 	if (Session::token() != Input::get('_token'))
 	{
 		throw new Illuminate\Session\TokenMismatchException;
 	}
+});
+*/
+
+Route::filter('csrf', function()
+{
+	if (Request::ajax())
+	{
+		if (Session::getToken() != Request::header('X-CSRF-Token'))
+		{
+			throw new Illuminate\Session\TokenMismatchException;
+		} 
+	}
+	else if (Session::getToken() != Input::get('csrf_token') && Session::getToken() != Input::get('_token'))
+	{
+		throw new Illuminate\Session\TokenMismatchException;
+	} 
 });

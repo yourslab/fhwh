@@ -15,3 +15,18 @@ Route::get('/', array(
 	'as'	=> 'home',
 	'uses'	=> 'HomeController@getIndex'
 ));
+
+Route::group(array('before' => 'csrf'), function()
+{
+
+	Route::post('/register/user', array(
+		'as'	=> 'registerUser',
+		'uses'	=> 'UserController@registerUser'
+	));
+
+	Route::post('/register/message', array(
+		'as'	=> 'registerMessage',
+		'uses'	=> 'UserController@registerMessage'
+	));
+
+});

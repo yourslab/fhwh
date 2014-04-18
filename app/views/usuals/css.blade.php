@@ -1,5 +1,6 @@
 {{-- Loading Bootstrap --}}
-{{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css') }}
+{{ HTML::style('bootstrap/css/bootstrap.css') }}
+{{-- HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css') --}}
 {{ HTML::style('css/style.css') }}
 
 {{-- Loading Flat UI --}}
