@@ -21,22 +21,33 @@ class UserController extends BaseController {
 
 	protected function registerMessage() {
 
+		//extra security for message type
+		$validMessageTypes = array("contact", "suggest");
+		if (!in_array(Input::get('message-type'), $validMessageTypes)) {
+			App::abort(403, 'Invalid message type');
+		}
+
 		//make the rules for form validation
 		$rules = array(
-            'contact-name'    => 'required',
-            'contact-email'   => 'required|email|min:3',
-            'contact-message' => 'required|min:5',
+            Input::get('message-type').'-name'    => 'required',
+            Input::get('message-type').'-email'   => 'required|email|min:3',
+            Input::get('message-type').'-message' => 'required|min:5',
             'message-type'    => array('required', 'regex:/^((contact)|(suggest))$/')
         );
 
 		//create custom labels for the error messages
         $betterLabels = array(
-            'contact-name'    => 'Name',
-            'contact-email'   => 'Email',
-            'contact-message' => 'Message',
+            Input::get('message-type').'-name'    => 'Name',
+            Input::get('message-type').'-email'   => 'Email',
         );
 
-        $validator = Validator::make(Input::all(), $rules); //validate all inputs with get
+        if (Input::get('message-type') === 'contact') {
+            $betterLabels += array(Input::get('message-type').'-message' => 'Message'); //change error label of textbox to message
+        } else if (Input::get('message-type') === 'suggest') {
+        	$betterLabels += array(Input::get('message-type').'-message' => 'Suggestion'); //change error label of textbox to suggestion
+        }
+
+        $validator = Validator::make(Input::all(), $rules); //validate all inputs with the $rules array
         $validator->setAttributeNames($betterLabels); 
 
         if ($validator->fails()) { //if there are errors
@@ -45,6 +56,8 @@ class UserController extends BaseController {
         		'errors' => $messages->all() //send error back to javascript
         	));
         } else if ($validator->passes()) { //if there are no errors
+        	//write input to database
+
         	return Response::json(array(
         		'success' => 1, //send success back to javascript
         	));
@@ -52,8 +65,4 @@ class UserController extends BaseController {
 
 	}
 
-	protected static function mico() {
-		return "Hello World!";
-	}
-	
 }
