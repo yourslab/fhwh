@@ -12,16 +12,16 @@
         <div class="alert alert-danger" id="contact-errors" style="display:none;padding:0 5% 0 5%;"></div>
           <form action="{{ action('UserController@registerMessage') }}" accept-charset="UTF-8" id="contact-form" role="form" method="POST">
             <div class="form-group">
-              <label for="contact-name">Name</label>
-              <input type="text" class="form-control" name="contact-name" id="contact-name" placeholder="Enter name">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
             </div>
             <div class="form-group">
-              <label for="contact-email">Email</label>
-              <input type="text" class="form-control" name="contact-email" id="contact-password" placeholder="Enter email">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" name="email" id="password" placeholder="Enter email">
             </div>
             <div class="form-group">
-              <label for="contact-message">Message</label>
-              <textarea class="form-control" name="contact-message" id="contact-message" rows="3" placeholder="Enter message"></textarea>
+              <label for="message">Message</label>
+              <textarea class="form-control" name="message" id="message" rows="3" placeholder="Enter message"></textarea>
             </div>
         </div>
         <div class="modal-footer">

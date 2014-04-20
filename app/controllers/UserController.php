@@ -29,26 +29,26 @@ class UserController extends BaseController {
 
 		//make the rules for form validation
 		$rules = array(
-            Input::get('message-type').'-name'    => 'required',
-            Input::get('message-type').'-email'   => 'required|email|min:3',
-            Input::get('message-type').'-message' => 'required|min:5',
-            'message-type'    => array('required', 'regex:/^((contact)|(suggest))$/')
+            'name'         => 'required',
+            'email'        => 'required|email|min:3',
+            'message'      => 'required|min:5',
+            'message-type' => array('required', 'regex:/^((contact)|(suggest))$/')
         );
 
 		//create custom labels for the error messages
         $betterLabels = array(
-            Input::get('message-type').'-name'    => 'Name',
-            Input::get('message-type').'-email'   => 'Email',
+            'name'    => 'Name',
+            'email'   => 'Email',
         );
 
         if (Input::get('message-type') === 'contact') {
-            $betterLabels += array(Input::get('message-type').'-message' => 'Message'); //change error label of textbox to message
+            $betterLabels += array('message' => 'Message'); //change error label of textbox to message
         } else if (Input::get('message-type') === 'suggest') {
-        	$betterLabels += array(Input::get('message-type').'-message' => 'Suggestion'); //change error label of textbox to suggestion
+        	$betterLabels += array('message' => 'Suggestion'); //change error label of textbox to suggestion
         }
 
         $validator = Validator::make(Input::all(), $rules); //validate all inputs with the $rules array
-        $validator->setAttributeNames($betterLabels); 
+        $validator->setAttributeNames($betterLabels); //configure error labels
 
         if ($validator->fails()) { //if there are errors
         	$messages = $validator->messages(); //assign error messages to $messages variable
@@ -57,6 +57,17 @@ class UserController extends BaseController {
         	));
         } else if ($validator->passes()) { //if there are no errors
         	//write input to database
+        	if (Input::get('message-type') === 'contact') { //if contact form
+        		$message = new Contact;
+        	} else if (Input::get('message-type') === 'suggest') { //if suggest form
+        		$message = new Suggest;
+        	}
+
+        	$message->name    = Input::get('name');
+        	$message->email   = Input::get('email');
+        	$message->message = Input::get('message');
+
+        	$message->save();
 
         	return Response::json(array(
         		'success' => 1, //send success back to javascript
