@@ -32,7 +32,9 @@ class UserController extends BaseController {
             'name'         => 'required',
             'email'        => 'required|email|min:3',
             'message'      => 'required|min:5',
-            'message-type' => array('required', 'regex:/^((contact)|(suggest))$/')
+            'message-type' => array('required', 'regex:/^((contact)|(suggest))$/'),
+            'captcha'      => 'honeypot', //honeypot validator: makes sure honeypot field is empty (prevents spammers)
+            'count'        => 'required|honeytime:5' //honeytime validator: makes sure that the message form isn't filled in only five seconds (prevents spammers)
         );
 
 		//create custom labels for the error messages

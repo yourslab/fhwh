@@ -11,17 +11,18 @@
         <div class="alert alert-success" id="contact-success" style="display:none;">Your message was sent!</div>
         <div class="alert alert-danger" id="contact-errors" style="display:none;padding:0 5% 0 5%;"></div>
           <form action="{{ action('UserController@registerMessage') }}" accept-charset="UTF-8" id="contact-form" role="form" method="POST">
+            {{ Form::honeypot('captcha', 'count') }}
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" class="form-control" name="name" id="name" placeholder="Enter name">
+              <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
             </div>
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="text" class="form-control" name="email" id="password" placeholder="Enter email">
+              <input type="text" class="form-control" name="email" id="password" placeholder="Enter your email">
             </div>
             <div class="form-group">
               <label for="message">Message</label>
-              <textarea class="form-control" name="message" id="message" rows="3" placeholder="Enter message"></textarea>
+              <textarea class="form-control" name="message" id="message" rows="3" placeholder="Enter your message"></textarea>
             </div>
         </div>
         <div class="modal-footer">

@@ -10,6 +10,7 @@ $(document).ready(function(){
   }
 
   reset_message_forms('contact');
+  reset_message_forms('suggest');
 
   //script for line radio buttons
   $('.icheck').each(function(){
@@ -84,9 +85,14 @@ $(document).ready(function(){
 
   }
 
-  //submit form using AJAX
+  //submit contact form using AJAX
   $('#contact-submit').click(function() {
     message('contact');
+  });
+
+  //submit suggestion form using AJAX
+  $('#suggest-submit').click(function() {
+    message('suggest');
   });
 
 });
