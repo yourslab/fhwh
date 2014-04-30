@@ -19,9 +19,14 @@ Route::get('/', array(
 Route::group(array('before' => 'csrf'), function()
 {
 
-	Route::post('/register/user', array(
-		'as'	=> 'registerUser',
-		'uses'	=> 'UserController@registerUser'
+	Route::post('/register/user/email', array(
+		'as'	=> 'registerUserEmail',
+		'uses'	=> 'UserController@registerUserEmail'
+	));
+
+	Route::post('/register/user/type', array(
+		'as'	=> 'registerUserType',
+		'uses'	=> 'UserController@registerUserType'
 	));
 
 	Route::post('/register/message', array(

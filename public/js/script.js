@@ -1,5 +1,13 @@
 $(document).ready(function(){
 
+  function reset_register_form() {
+    $('#register-form').each(function(){
+      this.reset(); //remove all previously filled forms
+    });    
+  }
+
+  reset_register_form();
+
   function reset_message_forms(type) {
     if($('#'+type+'-submit').attr('disabled')) { //check if the submit button is diabled
       $('#'+type+'-submit').prop('disabled', false); //enable submit button again
@@ -12,6 +20,14 @@ $(document).ready(function(){
   reset_message_forms('contact');
   reset_message_forms('suggest');
 
+  function csrf_send() {
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+  }
+  
   //script for line radio buttons
   $('.icheck').each(function(){
     var self = $(this),
@@ -27,19 +43,53 @@ $(document).ready(function(){
   });
 
   //cta phase 1
-  $('.ask-email').submit(function() {
-    //hide email textbox and submit button
-    $(this).hide();
-    $('.cta-email').hide();
+  $('.cta-button').click(function() {
+    csrf_send();
+    var email = $('.cta-email').val();
+    var count = $('input[name=count]').val();
+    var captcha = $('input[name=captcha]').val();
 
-    //show choices
-    $('.icheck-container').fadeIn();
+    $.ajax({
+      type: 'post',
+      url: '/register/user/email',
+      dataType: 'json',
+      data: {
+        email : email, captcha : captcha, count : count
+      },
+      success: function(data) {
+        if (data.errors) { //if there are errors
+          $('#cta-errors').html(''); //clear any previous errors from previous submit
+          for (var i = 0; i < data.errors.length; i++) { //loop through each error
+            $('#cta-errors').append(function() { //return and append each error
+              return data.errors[i]; //add errors to div
+            });
+          } 
+          $('#cta-errors').fadeIn();
+        } else if (data.success) { //if write is successful
+          $('#cta-errors').hide(); 
+          $('.cta-button').hide(); 
+          $('.cta-email').hide();
+          $('.icheck-container').fadeIn(); //show type choices
+        }
+      }
+    });
   });
 
   //cta last phase
-  $('.cta-button-last').click(function() {
+  $('.icheck').on('ifChecked', function(){
+    csrf_send();
+    var type = $('.icheck:checked').val();
     //hide choices
     $('.icheck-container').hide();
+
+    $.ajax({
+      type: 'post',
+      url: '/register/user/type',
+      dataType: 'json',
+      data: {
+        type : type
+      }
+    });    
 
     //show thank you
     $('.thanks').fadeIn();
@@ -47,11 +97,7 @@ $(document).ready(function(){
 
   //Message AJAX DRY function
   function message(type) {
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
+    csrf_send();
     //Convert message form to json string
     var message_form = $('#'+type+'-form').serializeArray();
     //Add extra message identifier parameter to message_form json string  
@@ -71,7 +117,7 @@ $(document).ready(function(){
           $('#'+type+'-errors').html(''); //clear any previous errors from previous submit
           for (var i = 0; i < data.errors.length; i++) { //loop through each error
             $('#'+type+'-errors').append(function() { //return and append each error
-                  return '<li>'+data.errors[i]+'</li>'; 
+              return '<li>'+data.errors[i]+'</li>'; 
             });
           } //add errors to div
           $('#'+type+'-errors').fadeIn(); //show error div

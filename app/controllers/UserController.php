@@ -4,19 +4,66 @@ class UserController extends BaseController {
 
 	/*
 	|--------------------------------------------------------------------------
-	| Default Home Controller
+	| User Controller
 	|--------------------------------------------------------------------------
 	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
+	| Registers the user and handles messaging.
 	|
-	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
 
-	protected function registerUser() {
-		return "View::make('index');";
+	protected function registerUserEmail() {
+
+		Session::put('email', Input::get('email'));
+
+		//make the rules for form validation
+		$rules = array(
+            'email'   => 'required|email|unique:users',
+            'captcha' => 'honeypot', //honeypot validator: makes sure honeypot field is empty (prevents spammers)
+            'count'   => 'required|honeytime:0' //honeytime validator: makes sure that email field isn't filled in only one second
+        );
+
+        $betterLabels = array(
+            'email' => 'Email'
+        );
+
+        $validator = Validator::make(Input::all(), $rules); //validate all inputs with the $rules array
+        $validator->setAttributeNames($betterLabels); //configure error labels
+
+        if ($validator->fails()) { //if there are errors
+        	$messages = $validator->messages(); //assign error messages to $messages variable
+        	return Response::json(array(
+        		'errors' => $messages->all() //send error back to javascript
+        	));
+        } else if ($validator->passes()) { //if there are no errors
+        	//write input to database
+        	$user = new User;
+        	$user->email = Input::get('email');
+        	$user->save();
+
+        	return Response::json(array(
+        		'success' => 1, //send success back to javascript
+        	));
+        }
+        
+	}
+
+	protected function registerUserType() {
+		if(Session::has('email')) {
+			$rule = array(
+			'type' => 'required|numeric|between:0,3'
+			);
+			$validator = Validator::make(Input::all(), $rule);
+			if ($validator->passes()) {
+	        	$session_email = Session::get('email');
+	        	$user = new User;
+	        	$user = User::where('email', '=', $session_email)->update(array('type' => Input::get('type')));
+        	} else {
+        		App::abort(403, 'Errors found');
+        	}
+        } else {
+        	App::abort(403, 'No session found');
+        }
 	}
 
 	protected function registerMessage() {
@@ -30,9 +77,9 @@ class UserController extends BaseController {
 		//make the rules for form validation
 		$rules = array(
             'name'         => 'required',
-            'email'        => 'required|email|min:3',
+            'email'        => 'required|email',
             'message'      => 'required|min:5',
-            'message-type' => array('required', 'regex:/^((contact)|(suggest))$/'),
+            'message-type' => array('required', 'regex:/^((contact)|(suggest))$/'), //array here because of regex conflict with | character 
             'captcha'      => 'honeypot', //honeypot validator: makes sure honeypot field is empty (prevents spammers)
             'count'        => 'required|honeytime:5' //honeytime validator: makes sure that the message form isn't filled in only five seconds (prevents spammers)
         );
@@ -40,7 +87,7 @@ class UserController extends BaseController {
 		//create custom labels for the error messages
         $betterLabels = array(
             'name'    => 'Name',
-            'email'   => 'Email',
+            'email'   => 'Email'
         );
 
         if (Input::get('message-type') === 'contact') {
@@ -72,7 +119,7 @@ class UserController extends BaseController {
         	$message->save();
 
         	return Response::json(array(
-        		'success' => 1, //send success back to javascript
+        		'success' => 1 //send success back to javascript
         	));
         }
 

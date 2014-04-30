@@ -77,6 +77,10 @@ body {
     padding-bottom:5%;
 }
 
+.middle-text {
+	text-align:center;
+}
+
 .cta-caption-icheck {
 	font-size:1em;
 	font-weight:bold;

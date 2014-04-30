@@ -19,26 +19,29 @@
 				<div class="cta-container">
 					<h4 class="cta-caption">Ask questions and get them answered for free by real educators and tutors</h4>
 					<img src="images/icons/png/Retina-Ready.png" class="check-image"/>
+					<form id="register-form" role="form" action="#">
+					<div class="alert alert-danger cta-form-size middle-text" id="cta-errors" style="padding:0;display:none;font-size:0.9em;"></div>
+					{{ Form::honeypot('captcha', 'count') }}
+					<input type="text" placeholder="Enter email" class="form-control cta-form-size cta-email" />
+					<button type="button" class="btn btn-lg btn-success cta-form-size cta-button">Be the first to find out more >></button>
 					<div class="icheck-container">
 					<h6 class="cta-caption-icheck">Please choose one</h6>
-						<input type="radio" class="icheck" name="iCheck"/>
+						<input type="radio" class="icheck" name="iCheck" value="1"/>
 							<label>I'm a student.</label>
 						<div class="push"></div>
-						<input type="radio" class="icheck" name="iCheck"/>
+						<input type="radio" class="icheck" name="iCheck" value="2"/>
 							<label>I'm an educator.</label>
 						<div class="push"></div>
-						<input type="radio" class="icheck" name="iCheck"/>
+						<input type="radio" class="icheck" name="iCheck" value="3"/>
 							<label>I'm none of the above.</label>
-						<div class="push"></div>
-						<button type="button" class="btn btn-lg btn-success cta-form-size cta-button-last">Finish</button>
+						<!--<div class="push"></div>
+						<button type="button" class="btn btn-lg btn-success cta-form-size cta-button-last">Finish</button>-->
 					</div>
+					</form>
+
 					<div class="thanks alert alert-success">
 					Thank you! We'll make sure to email you if we have any updates.
 					</div>
-					<form class="ask-email" role="form" action="#">
-						<input type="text" placeholder="Enter email" class="form-control cta-form-size cta-email" />
-					<button type="submit" class="btn btn-lg btn-success cta-form-size cta-button">Be the first to find out more >></button>
-					</form>
 				</div>
 			</div>
 		</div>
